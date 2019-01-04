@@ -1,3 +1,9 @@
-include ':plugin', ':api'
+file('.').eachDir {
+    if (it.name.startsWith('lancet-')) {
+        def projectName = ":${it.name.substring(7)}"
+        include projectName
+        project(projectName).projectDir = it
+    }
+}
 rootProject.name = "Lancet"
 

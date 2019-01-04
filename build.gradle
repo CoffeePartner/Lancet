@@ -1,101 +1,28 @@
 buildscript {
     ext {
-        lancet_group = 'com.dieyidezui.lancet'
-        lancet_version = '2.0.0-SNAPSHOT'
-
-        asm_version = '7.0'
-        android_tools_version = '3.2.1'
-        guava_version = '23.0'
+        lancet_group = 'coffeepartner.lancet'
+        lancet_version = '2.0.0-RC1'
+        capt_version = '1.0.0-RC1'
     }
     repositories {
         jcenter()
-        mavenCentral()
     }
     dependencies {
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
     }
 }
-subprojects { pro ->
 
+subprojects {
     repositories {
         google()
         jcenter()
         mavenCentral()
     }
-
-    version = lancet_version
-    group = lancet_group
-
-
-    apply plugin: 'maven'
-    apply plugin: 'com.jfrog.bintray'
-    afterEvaluate {
-        task sourcesJar(type: Jar) {
-            from sourceSets.main.java.srcDirs
-            classifier = 'sources'
-        }
-
-        task javadocJar(type: Jar, dependsOn: javadoc) {
-            classifier = 'javadoc'
-            from javadoc.destinationDir
-        }
-
-        artifacts {
-            archives sourcesJar
-            archives javadocJar
-        }
-        tasks.install {
-            repositories.mavenInstaller {
-                pom {
-                    project {
-                        packaging 'jar'
-                        licenses {
-                            license {
-                                name 'The Apache Software License, Version 2.0'
-                                url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                            }
-                        }
-                        developers {
-                            developer {
-                                id 'dieyidezui'
-                                name '耿万鹏'
-                                email 'dieyidezui@gmail.com'
-                            }
-
-                            developer {
-                                id 'bxbxbai'
-                                name '白雪斌'
-                                email 'bxbxbai@gmail.com'
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    bintray {
-        user = BINTRAY_USER
-        key = BINTRAY_KEY
-        configurations = ['archives']
-        pkg {
-            repo = "maven"
-            name = pro.name    //发布到JCenter上的项目名字
-            websiteUrl = "https://github.com/CoffeePartner/Lancet"
-            vcsUrl = "git@github.com:CoffeePartner/Lancet.git"
-            licenses = ["Apache-2.0"]
-            publish = true
-        }
-    }
 }
 
-evaluationDependsOnChildren()
-
-task jarToTest(type: Copy) {
-    Jar p = project(":plugin").tasks.jar
-    Jar a = project(":api").tasks.jar
-
-    from p.destinationDir, a.destinationDir
-    into TEST_DIR
-    dependsOn p, a
+try {
+    apply from: 'publish.gradle'
+} catch (e) {
+    e.printStackTrace()
 }
 
