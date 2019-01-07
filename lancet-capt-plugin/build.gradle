@@ -4,6 +4,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compileOnly "com.google.code.findbugs:jsr305:3.0.2"
     compile project(":rt")
+    compile "coffeepartner.capt:api:$capt_version"
 }
 
 sourceCompatibility = "1.8"

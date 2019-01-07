@@ -1,6 +1,5 @@
 package stub.weaver.internal.parser;
 
-import com.dieyidezui.lancet.rt.annotations.*;
 import com.google.common.base.Joiner;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.Opcodes;

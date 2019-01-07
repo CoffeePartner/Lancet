@@ -2,7 +2,7 @@ buildscript {
     ext {
         lancet_group = 'coffeepartner.lancet'
         lancet_version = '2.0.0-RC1'
-        capt_version = '1.0.0-RC1'
+        capt_version = '1.0.0-RC2-SNAPSHOT'
     }
     repositories {
         jcenter()
@@ -16,7 +16,14 @@ subprojects {
     repositories {
         google()
         jcenter()
+        mavenLocal()
         mavenCentral()
+    }
+
+    configurations.all {
+        resolutionStrategy {
+            cacheChangingModulesFor 0, 'seconds'
+        }
     }
 }
 
