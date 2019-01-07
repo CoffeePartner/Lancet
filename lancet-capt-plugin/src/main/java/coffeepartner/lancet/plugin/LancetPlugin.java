@@ -10,6 +10,5 @@ import java.io.IOException;
 public class LancetPlugin extends Plugin<CaptInternal> {
     @Override
     public void onCreate(CaptInternal capt) throws IOException, InterruptedException {
-
     }
 }

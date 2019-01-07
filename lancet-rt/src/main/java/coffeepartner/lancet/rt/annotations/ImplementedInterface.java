@@ -2,15 +2,13 @@ package coffeepartner.lancet.rt.annotations;
 
 import coffeepartner.lancet.rt.Scope;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 /**
  * Limit the target classes.
  */
-@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Retention(RetentionPolicy.CLASS)
 @Target({ElementType.TYPE, ElementType.METHOD})
 public @interface ImplementedInterface {
 
@@ -23,5 +21,5 @@ public @interface ImplementedInterface {
     /**
      * The scope of interface array.
      */
-    Scope scope() default Scope.SELF;
+    int scope() default Scope.SELF;
 }

@@ -1,6 +1,6 @@
 package coffeepartner.lancet.rt.annotations;
 
-import coffeepartner.lancet.rt.internal.annotations.AutoReplaced;
+import java.lang.annotation.*;
 
 /**
  * Pre process the classes who extends {@link Throwable}.
@@ -8,9 +8,8 @@ import coffeepartner.lancet.rt.internal.annotations.AutoReplaced;
  * Combine with {@link NameRegex} to restrict the scope.
  */
 @Documented
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(RetentionPolicy.CLASS)
 @Target(ElementType.METHOD)
-@AutoReplaced
 public @interface TryCatchHandler {
 
     /**

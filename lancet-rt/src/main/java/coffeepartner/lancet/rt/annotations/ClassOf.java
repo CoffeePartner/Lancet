@@ -1,5 +1,7 @@
 package coffeepartner.lancet.rt.annotations;
 
+import java.lang.annotation.*;
+
 /**
  * Annotates a parameter that its actual desc is the value().
  * The parameter should be instance of the desc of class.
@@ -11,7 +13,7 @@ package coffeepartner.lancet.rt.annotations;
  * void foo(@ClassOf("java.util.HashMap[]") Map map); // doesn't work
  */
 @Documented
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(RetentionPolicy.CLASS)
 @Target(ElementType.PARAMETER)
 public @interface ClassOf {
     String value();

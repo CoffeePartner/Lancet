@@ -1,7 +1,5 @@
 package coffeepartner.lancet.rt;
 
-import coffeepartner.lancet.rt.internal.annotations.AutoReplaced;
-
 import javax.annotation.Nullable;
 
 public class Lancet {
@@ -26,7 +24,6 @@ public class Lancet {
         return global;
     }
 
-    @AutoReplaced
     public static AroundContext getContext() {
         throw new AssertionError("Don't invoke it outside hook method!");
     }

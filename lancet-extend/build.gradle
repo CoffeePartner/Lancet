@@ -1,0 +1,12 @@
+apply plugin: 'java'
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compileOnly "com.google.code.findbugs:jsr305:3.0.2"
+    compile project(":rt")
+    compile "coffeepartner.capt:api:$capt_version"
+    compileOnly 'com.android.support:support-annotations:28.0.0'
+}
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"

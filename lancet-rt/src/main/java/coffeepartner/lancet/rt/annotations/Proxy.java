@@ -1,14 +1,13 @@
 package coffeepartner.lancet.rt.annotations;
 
-import coffeepartner.lancet.rt.internal.annotations.AutoReplaced;
+import java.lang.annotation.*;
 
 /**
  * Indicate the hook method.
  */
 @Documented
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(RetentionPolicy.CLASS)
 @Target(ElementType.METHOD)
-@AutoReplaced
 public @interface Proxy {
     /**
      * The target method name.
