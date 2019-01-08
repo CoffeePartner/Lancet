@@ -1,4 +1,7 @@
 # Lancet
+
+[![Build Status](https://travis-ci.org/CoffeePartner/Lancet.svg?branch=master)](https://travis-ci.org/CoffeePartner/Lancet)
+
 A lightweight and fast AOP library for Android App and SDK developers.
 
 Based on [capt](https://github.com/CoffeePartner/capt).
