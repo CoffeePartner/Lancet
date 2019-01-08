@@ -16,7 +16,7 @@ public @interface Insert {
     String value();
 
     /**
-     * if true, create empty method which only invoke super if not exits
+     * if true, create empty method which only invoke super if not exits.
      */
     boolean mayCreateSuper() default false;
 

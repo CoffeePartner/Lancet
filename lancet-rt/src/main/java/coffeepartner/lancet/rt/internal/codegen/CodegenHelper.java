@@ -15,9 +15,9 @@ import java.util.List;
 public class CodegenHelper {
 
     /**
-     * For {@link Interceptable}
+     * For {@link Interceptable}.
      */
-    private static GeneratedInterceptor[] EMPTY = new GeneratedInterceptor[0];
+    private static final GeneratedInterceptor[] EMPTY = new GeneratedInterceptor[0];
 
     /**
      * Invoked by generated code at hook point.
@@ -38,14 +38,14 @@ public class CodegenHelper {
     }
 
     /**
-     * For {@link TryCatchHandler}
+     * For {@link TryCatchHandler}.
      */
     public static Object onThrow(@Nullable Object target, Object[] args, GeneratedInterceptor[] interceptors) {
         return new AroundMethodChain(target, null, 0, Arrays.<Interceptor>asList(interceptors), null).proceed(args);
     }
 
     /**
-     * Lancet.getContext() will redirect to this method
+     * Lancet.getContext() will redirect to this method.
      */
     public static AroundContext getContext(GeneratedInterceptor interceptor) {
         return interceptor.getContext();

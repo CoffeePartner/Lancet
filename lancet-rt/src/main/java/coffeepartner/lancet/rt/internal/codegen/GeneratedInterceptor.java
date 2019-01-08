@@ -19,11 +19,11 @@ public abstract class GeneratedInterceptor implements Interceptor {
         }
     }
 
-    final public AroundContext getContext() {
+    public final AroundContext getContext() {
         return context;
     }
 
-    final public void setArg(int index, Object o) {
+    public final void setArg(int index, Object o) {
         context.getArgs()[index] = o;
     }
 

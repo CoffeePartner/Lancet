@@ -20,6 +20,8 @@ subprojects {
         mavenCentral()
     }
 
+    apply plugin: 'checkstyle'
+
     configurations.all {
         resolutionStrategy {
             cacheChangingModulesFor 0, 'seconds'
@@ -27,9 +29,5 @@ subprojects {
     }
 }
 
-try {
-    apply from: 'publish.gradle'
-} catch (e) {
-    e.printStackTrace()
-}
+apply from: 'publish.gradle'
 

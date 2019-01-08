@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 public @interface NameRegex {
     /**
-     * The regex to match the class name, use the internal name, dot to slash
+     * The regex to match the class name, use the internal name, dot to slash.
      */
     String value();
 }
