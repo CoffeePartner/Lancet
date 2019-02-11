@@ -3,7 +3,6 @@ package coffeepartner.lancet.rt.internal.codegen;
 import coffeepartner.lancet.rt.AroundContext;
 import coffeepartner.lancet.rt.Interceptor;
 import coffeepartner.lancet.rt.Lancet;
-import coffeepartner.lancet.rt.annotations.Interceptable;
 import coffeepartner.lancet.rt.annotations.TryCatchHandler;
 import coffeepartner.lancet.rt.internal.AroundMethodChain;
 
@@ -13,11 +12,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CodegenHelper {
-
-    /**
-     * For {@link Interceptable}.
-     */
-    private static final GeneratedInterceptor[] EMPTY = new GeneratedInterceptor[0];
 
     /**
      * Invoked by generated code at hook point.
@@ -49,9 +43,5 @@ public class CodegenHelper {
      */
     public static AroundContext getContext(GeneratedInterceptor interceptor) {
         return interceptor.getContext();
-    }
-
-    public static GeneratedInterceptor[] emptyArray() {
-        return EMPTY;
     }
 }

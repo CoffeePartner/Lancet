@@ -2,7 +2,7 @@ buildscript {
     ext {
         lancet_group = 'coffeepartner.lancet'
         lancet_version = '2.0.0-RC1'
-        capt_version = '1.0.0-RC2-SNAPSHOT'
+        capt_version = '1.0.0-RC2'
     }
     repositories {
         jcenter()
