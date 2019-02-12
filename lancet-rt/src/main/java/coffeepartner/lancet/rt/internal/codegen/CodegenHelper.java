@@ -18,7 +18,7 @@ public class CodegenHelper {
      *
      * @param interceptorArray sorted by priority
      */
-    public static void doAround(@Nullable Object target, @Nullable Object thiz, Object[] args, GeneratedInterceptor[] interceptorArray) {
+    public static Object doAround(@Nullable Object target, @Nullable Object thiz, Object[] args, GeneratedInterceptor[] interceptorArray) {
 
         List<Interceptor> interceptors = new ArrayList<>(interceptorArray.length + 1);
 
@@ -28,7 +28,7 @@ public class CodegenHelper {
         }
         interceptors.addAll(Arrays.asList(interceptorArray));
         // Optimize for first invoke, reduce clone args once
-        new AroundMethodChain(target, thiz, 0, interceptors, null).proceed(args);
+        return new AroundMethodChain(target, thiz, 0, interceptors, null).proceed(args);
     }
 
     /**
