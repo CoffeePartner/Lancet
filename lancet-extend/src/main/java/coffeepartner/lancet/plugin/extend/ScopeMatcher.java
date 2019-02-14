@@ -4,14 +4,14 @@ import coffeepartner.capt.plugin.api.graph.ClassGraph;
 import coffeepartner.capt.plugin.api.graph.ClassInfo;
 
 import javax.annotation.Nullable;
+import java.util.Set;
+import java.util.function.Function;
 
 public interface ScopeMatcher {
     /**
-     * @param graph     class graph
-     * @param classInfo the class
-     * @param scope     the input scope
+     * @param scope the input scope
      * @return null if can not deal with input scope
      */
     @Nullable
-    Boolean satisfied(ClassGraph graph, ClassInfo classInfo, int scope);
+    Function<ClassInfo, Set<ClassInfo>> match(ClassGraph graph, int scope);
 }

@@ -13,8 +13,8 @@ import java.lang.annotation.*;
 public @interface ImplementedInterface {
 
     /**
-     * Interface array, java type name, $ for inner class.
-     * For example : a.b.c$d;
+     * Interface array, jvm internal name, $ for inner class.
+     * For example : a/b/c$d;
      */
     String[] value();
 

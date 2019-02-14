@@ -19,7 +19,7 @@ public abstract class GeneratedInterceptor implements Interceptor {
         }
     }
 
-    public final AroundContext getContext() {
+    final AroundContext getContext() {
         return context;
     }
 

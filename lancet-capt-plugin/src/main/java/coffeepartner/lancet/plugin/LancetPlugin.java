@@ -19,13 +19,14 @@ import java.util.stream.Stream;
 
 @Def
 public class LancetPlugin extends Plugin<CaptInternal> {
-    CaptInternal capt;
-    ScopeMatcher matcher;
+
+    private CaptInternal capt;
+    private ScopeMatcher matcher;
 
     @Override
     public void onCreate(CaptInternal capt) throws IOException, InterruptedException {
         this.capt = capt;
-        this.matcher = loadMatchers();
+        this.matcher = createMatcher();
     }
 
     @Nullable
@@ -40,10 +41,9 @@ public class LancetPlugin extends Plugin<CaptInternal> {
         return super.onTransformClass();
     }
 
-    private ScopeMatcher loadMatchers() {
+    private ScopeMatcher createMatcher() {
         Map<String, Object> args = capt.getArgs().getMyArguments().arguments();
         return new ChainedScopeMatcher(Stream.concat(
-                Stream.of(new DefaultScopeMatcher()),
                 Stream.of(args.get("extraScopeMatchers"))
                         .filter(Objects::nonNull)
                         .flatMap(o -> Arrays.stream((String[]) o))
@@ -53,7 +53,8 @@ public class LancetPlugin extends Plugin<CaptInternal> {
                             } catch (Exception e) {
                                 throw new IllegalArgumentException("Create ScopeMatcher instance failed, class: " + s);
                             }
-                        })
+                        }),
+                Stream.of(new DefaultScopeMatcher()) // use default at last
         ).collect(Collectors.toList()));
     }
 }

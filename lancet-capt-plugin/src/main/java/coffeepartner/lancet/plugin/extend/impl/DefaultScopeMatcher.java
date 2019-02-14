@@ -5,11 +5,14 @@ import coffeepartner.capt.plugin.api.graph.ClassInfo;
 import coffeepartner.lancet.plugin.extend.ScopeMatcher;
 
 import javax.annotation.Nullable;
+import java.util.Set;
+import java.util.function.Function;
 
 public class DefaultScopeMatcher implements ScopeMatcher {
+
     @Nullable
     @Override
-    public Boolean satisfied(ClassGraph graph, ClassInfo classInfo, int scope) {
+    public Function<ClassInfo, Set<ClassInfo>> match(ClassGraph graph, int scope) {
         return null;
     }
 }

@@ -6,6 +6,8 @@ import coffeepartner.lancet.plugin.extend.ScopeMatcher;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Set;
+import java.util.function.Function;
 
 public class ChainedScopeMatcher implements ScopeMatcher {
 
@@ -17,7 +19,7 @@ public class ChainedScopeMatcher implements ScopeMatcher {
 
     @Nullable
     @Override
-    public Boolean satisfied(ClassGraph graph, ClassInfo classInfo, int scope) {
+    public Function<ClassInfo, Set<ClassInfo>> match(ClassGraph graph, int scope) {
         return null;
     }
 }
