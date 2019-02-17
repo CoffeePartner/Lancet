@@ -17,7 +17,11 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@Def
+@Def(supportedAnnotationTypes = {
+        "coffeepartner.lancet.rt.annotations.Insert",
+        "coffeepartner.lancet.rt.annotations.Proxy",
+        "coffeepartner.lancet.rt.annotations.TryCatchHandler"
+})
 public class LancetPlugin extends Plugin<CaptInternal> {
 
     private CaptInternal capt;
