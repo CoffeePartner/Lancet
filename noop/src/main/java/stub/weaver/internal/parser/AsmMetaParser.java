@@ -125,7 +125,7 @@ public class AsmMetaParser implements MetaParser {
                 URLConnection urlConnection = url.openConnection();
 
                 // gradle daemon bug:
-                // Different builds in one process because of daemon which makes the jar connection will read the context from resource if they points to the same jar file.
+                // Different builds in one process because of daemon which makes the jar connection will read the context from resource if they cut to the same jar file.
                 // But the file may be changed.
 
                 urlConnection.setUseCaches(false);

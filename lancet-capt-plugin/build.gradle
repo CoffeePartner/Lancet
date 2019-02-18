@@ -6,7 +6,6 @@ dependencies {
     compile project(":rt")
     compile project(":extend")
     compile "coffeepartner.capt:api:$capt_version"
-    compile "coffeepartner.capt:plugin:$capt_version"
 }
 
 sourceCompatibility = "1.8"
