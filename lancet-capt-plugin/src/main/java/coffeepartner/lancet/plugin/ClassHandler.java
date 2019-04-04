@@ -1,12 +1,14 @@
 package coffeepartner.lancet.plugin;
 
 import coffeepartner.capt.plugin.api.graph.ClassInfo;
+import org.objectweb.asm.MethodVisitor;
 
 import javax.annotation.Nullable;
 
 public interface ClassHandler {
 
-    MethodHandler visitMethod();
+    MethodVisitor visitMethod(int access, String name, String desc,
+                              String signature, String[] exceptions, MethodHandler handler);
 
     boolean visitEnd(MethodHandler factory);
 

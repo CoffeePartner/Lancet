@@ -55,7 +55,7 @@ public class LancetPlugin extends Plugin<CaptInternal> {
                             try {
                                 return capt.captLoader().loadClass(s).asSubclass(ScopeMatcher.class).newInstance();
                             } catch (Exception e) {
-                                throw new IllegalArgumentException("Create ScopeMatcher instance failed, class name: " + s);
+                                throw new IllegalArgumentException("Create ScopeMatcher instance failed, class name: " + s, e);
                             }
                         }),
                 Stream.of(new DefaultScopeMatcher()) // use default at last

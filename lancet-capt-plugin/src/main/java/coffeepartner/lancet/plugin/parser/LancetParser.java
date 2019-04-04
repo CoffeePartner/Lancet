@@ -4,7 +4,11 @@ import coffeepartner.capt.plugin.api.OutputProvider;
 import coffeepartner.capt.plugin.api.graph.ClassInfo;
 import coffeepartner.lancet.plugin.ClassHandler;
 import coffeepartner.lancet.plugin.bean.ClassBean;
+import coffeepartner.lancet.plugin.util.Exclude;
+import com.google.gson.ExclusionStrategy;
+import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import okio.BufferedSource;
 import org.objectweb.asm.tree.MethodNode;
@@ -23,7 +27,19 @@ public class LancetParser {
 
     private final OutputProvider outputProvider;
     private final boolean incremental;
-    private final Gson gson = new Gson();
+    private final Gson gson = new GsonBuilder()
+            .addSerializationExclusionStrategy(new ExclusionStrategy() {
+                @Override
+                public boolean shouldSkipField(FieldAttributes f) {
+                    return f.getAnnotation(Exclude.class) != null;
+                }
+
+                @Override
+                public boolean shouldSkipClass(Class<?> clazz) {
+                    return false;
+                }
+            })
+            .create();
     private Map<String, ClassBean> preBean;
     private Map<>
 

@@ -1,11 +1,13 @@
 package coffeepartner.lancet.plugin.bean;
 
 
+import coffeepartner.lancet.plugin.util.Exclude;
 import org.objectweb.asm.tree.MethodNode;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class MethodBean {
 
@@ -15,9 +17,11 @@ public class MethodBean {
         bean.access = methodNode.access;
         bean.desc = methodNode.desc;
         bean.name = methodNode.name;
-        if(methodNode.visibleAnnotations != null) {
-            bean.annotations = methodNode.invisibleAnnotations.stream().
+        if (methodNode.invisibleAnnotations != null) {
+            bean.annotations = methodNode.invisibleAnnotations.stream().map(AnnotationBean::create).collect(Collectors.toList());
         }
+        bean.node = methodNode;
+        return bean;
     }
 
     public List<AnnotationBean> annotations = Collections.emptyList();
@@ -25,6 +29,9 @@ public class MethodBean {
     public int access;
     public String name;
     public String desc;
+
+    @Exclude
+    public MethodNode node;
 
     // extra binding info
 

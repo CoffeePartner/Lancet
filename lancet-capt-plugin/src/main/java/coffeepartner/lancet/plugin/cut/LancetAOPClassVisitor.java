@@ -24,17 +24,17 @@ public class LancetAOPClassVisitor extends CaptClassVisitor {
     }
 
     private MethodHandler createCurrent() {
-        return (access, name, desc, signature, exceptions, next) -> visitMethod(access, name, desc, signature, exceptions);
+        return this::visitMethod;
     }
 
     private MethodHandler createNext() {
-        return ((access, name, desc, signature, exceptions, next) -> super.visitMethod(access, name, desc, signature, exceptions));
+        return super::visitMethod;
     }
 
 
     @Override
     public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
-        return handler.visitMethod().create(access, name, desc, signature, exceptions, createNext());
+        return handler.visitMethod(access, name, desc, signature, exceptions, createNext());
     }
 
     @Override
